@@ -1,0 +1,14 @@
+node_modules/
+.env
+academic.db
+academic.db-shm
+academic.db-wal
+uploads/*
+!uploads/.gitkeep
+.DS_Store
+private-drive/*
+!private-drive/.gitkeep
+.env.*
+!.env.example
+*.log
+backups/

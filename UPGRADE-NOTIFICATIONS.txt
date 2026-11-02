@@ -1,0 +1,23 @@
+CAMPUSLEARN NOTIFICATION UPGRADE
+
+This ZIP is based on the uploaded academic-platform-cloud-ready project and keeps the existing Node.js/Express/SQLite app and login roles.
+
+Added:
+- Persistent notifications for each account
+- Faculty assignment notifications to matching students
+- Faculty quiz notifications to matching students
+- New study material notifications
+- Automatic in-app warning when monthly attendance is below 45%
+- Admin announcements for students, faculty, or everyone
+- Individual and mark-all-as-read controls
+- Responsive notification cards
+
+Run:
+1. Extract the ZIP.
+2. Open the academic-platform folder in VS Code.
+3. PowerShell: Copy-Item .env.example .env (only if .env does not already exist)
+4. PowerShell: npm install
+5. PowerShell: npm start
+6. Browser: http://localhost:3000
+
+The notifications table is created automatically on server start. No manual migration is required.

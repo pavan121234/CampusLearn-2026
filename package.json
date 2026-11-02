@@ -1,0 +1,28 @@
+{
+  "name": "academic-resources-collaborative-learning",
+  "version": "1.0.0",
+  "description": "Responsive academic resources and collaborative learning platform with Super Admin, Faculty, Students and an online/offline study assistant.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "admin:reset": "node reset-admin.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@google/genai": "^2.31.0",
+    "adm-zip": "^0.5.16",
+    "bcryptjs": "^2.4.3",
+    "better-sqlite3": "^12.4.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^7.0.5"
+  },
+  "allowScripts": {
+    "better-sqlite3@12.11.1": true
+  }
+}

@@ -1,0 +1,27 @@
+CampusLearn Gmail notification setup
+
+The current backend already creates in-app notifications and attempts Gmail delivery
+when an admin announcement, faculty assignment, quiz, or study resource is published.
+This update adds clear SMTP diagnostics and an admin-only test-email API.
+
+Render Environment variables (add them to the CampusLearn WEB SERVICE):
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_SECURE=false
+SMTP_USER=your full Gmail address
+SMTP_PASS=your Google 16-character App Password (not your normal Gmail password)
+SMTP_FROM=the same Gmail address
+
+Keep JWT_SECRET and GEMINI_API_KEY as separate existing variables. Do not put the
+literal text "your..." in production. Do not commit .env or real secrets to GitHub.
+
+After saving variables, deploy the latest commit. Publish a test announcement or
+assignment/quiz, then inspect Render Logs for lines beginning [Email].
+To test SMTP directly while logged in as admin, POST /api/admin/email/test with
+the same Authorization Bearer token used by the web app. A successful request
+sends a test email to the administrator account's registered email address.
+
+Audience rules:
+- Admin announcement: chosen audience (students, faculty, or all).
+- Faculty assignment/quiz/resource: students matching that subject's branch,
+  semester, and scheme.

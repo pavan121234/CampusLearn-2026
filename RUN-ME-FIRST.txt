@@ -1,0 +1,42 @@
+CAMPUSLEARN — PREMIUM PORTAL UPGRADE
+====================================
+
+WHAT CHANGED
+- New welcome landing page with three separate entry cards: Admin, Student and Faculty.
+- Separate role-specific login screens. The server checks the selected role, so a student cannot sign in through the admin/faculty portal.
+- Unified premium dark-only Obsidian Aurora theme: deep navy, teal and violet accents. No white dashboard panels. Responsive on phone and laptop.
+- Admin announcements, faculty study materials, assignments, quizzes and below-45% attendance alerts create in-app notifications and attempt Gmail delivery.
+- Student notification cards have an Open update action that takes the student to the related resources, assignments, quizzes or attendance section.
+- Forgot password now uses registered email only; the SMS/mobile selector has been removed.
+- Password change and quiz submission handlers keep a stable form reference and show explicit success messages rather than accessing a cleared event.currentTarget.
+- Student personal drive supports inline PDF/image/video/text previews, filename-preserving downloads, and YouTube embedded previews plus an external watch link.
+- Existing database is migrated automatically with a notification action_url column; existing account and academic records are preserved.
+
+RUN ON WINDOWS (PowerShell)
+1. Extract this ZIP to a new folder.
+2. Open the inner academic-platform folder in VS Code.
+3. Open Terminal > New Terminal.
+4. If .env does not exist, run: Copy-Item .env.example .env
+5. Install dependencies: npm install
+6. Start the app: npm start
+7. Open: http://localhost:3000
+
+GMAIL SETUP (REQUIRED FOR EMAIL NOTIFICATIONS)
+1. Use a Gmail account dedicated to the project.
+2. Turn on Google 2-Step Verification and create a Google App Password.
+3. Open .env and set:
+   SMTP_HOST=smtp.gmail.com
+   SMTP_PORT=587
+   SMTP_SECURE=false
+   SMTP_USER=yourgmail@gmail.com
+   SMTP_PASS=your_16_character_app_password
+   SMTP_FROM=CampusLearn <yourgmail@gmail.com>
+4. Save .env and restart the server.
+5. Test by sending an admin announcement and publishing a faculty assignment/resource/quiz to a student in the matching branch, semester and scheme.
+
+IMPORTANT
+- Do not upload .env or share the Gmail App Password. Keep it in the hosting provider's secret/environment-variable settings for cloud deployment.
+- Gmail delivery depends on correct SMTP credentials and outbound SMTP access. If credentials are missing or rejected, in-app notifications still work; the server logs the email failure.
+- Back up academic.db, private-drive, uploads and .env before replacing an existing installation. Keep the database and upload directories in the same persistent DATA_DIR when deploying.
+- For deployment, set a strong JWT_SECRET (at least 32 characters) and configure SMTP variables in the hosting dashboard.
+- Checks performed for this ZIP: JavaScript syntax checks and ZIP integrity. A live Gmail delivery and full browser end-to-end test require your own SMTP credentials and runtime environment.

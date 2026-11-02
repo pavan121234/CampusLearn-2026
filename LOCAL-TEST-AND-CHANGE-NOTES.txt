@@ -1,0 +1,20 @@
+CampusLearn local test package
+
+Start locally (PowerShell, from this folder):
+  npm install
+  node --check server.js
+  npm start
+Then open http://localhost:3000
+
+Keep your existing .env, academic.db, uploads and private-drive folders safe when replacing a project folder. Configure SMTP_HOST, SMTP_PORT, SMTP_SECURE, SMTP_USER, SMTP_PASS and SMTP_FROM in .env for Gmail notifications. Never commit .env.
+
+Included in this revision:
+- Null-safe toast handling and clearer attendance/result success messages.
+- Sign-out moved to the persistent top dashboard bar; removed from Change Password panel.
+- Admin navigation no longer includes the separate Resources page.
+- Latest-updates card removed from the student home dashboard.
+- Faculty/student welcome and login background styling using the three supplied reference images.
+- Faculty notification creation when a student submits an assignment or quiz (email uses the existing SMTP notification helper).
+
+IMPORTANT TESTING NOTE:
+This is a source-level update, not a fully QA-tested release. The requested editable attendance/result history UI, pass/fail-only result rows, complete faculty-account edit form cleanup, and reliable inline preview/download for every resource type still need a full browser/database test and may require further adjustments. Test using a COPY of your database first. Do not deploy until all workflows are verified.
